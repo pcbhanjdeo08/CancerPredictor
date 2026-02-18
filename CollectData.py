@@ -2,30 +2,33 @@ class CollectData(object):
     """description of class"""
 
 
-    # streamlit_app.py
+# streamlit_app.py
 import streamlit as st
 
 from CheckCancerProbability import CheckCancerProbability
 
-st.title("My Streamlit Web App")
-st.write("This is an interactive webpage built with Python.")
+st.title("Corelation of cancer with microplastic")
+st.write("This is an interactive webpage built with Python to show correlation between cancer and microplastic.")
 
-# Add a button and handle the interaction
-# Pseudocode / Plan (detailed):
-# 1. Remove the Streamlit app code that was accidentally placed inside `CancerPredictorPython\CollectData.py`.
-# 2. Ensure `CollectData` is a simple, well-formed class definition with no stray top-level indented blocks.
-# 3. Create a separate `streamlit_app.py` (shown below) that imports `CollectData` or `CheckCancerProbability`
-#    correctly with no leading spaces before `import` statements.
-# 4. Use absolute import: `from CancerPredictorPython.CheckCancerProbability import CheckCancerProbability`
-#    at the top of `streamlit_app.py`.
-# 5. Verify no unexpected indentation remains (no leading spaces before `import` at top level).
-# 6. Provide corrected contents for both `CollectData.py` and `streamlit_app.py` so you can replace files directly.
-if st.button("Click Me"):
-    st.write("Button clicked!")
+text_microplastic_index = st.number_input("Enter microplastic_index")
+text_pm25 = st.number_input("Enter pm25")
+text_inflammation_index = st.number_input("Enter minflammation_index")
+text_exposure_years = st.number_input("Enter exposure_years")
 
-    
-    my_array = [50, 80, 40, 10]
+# create a placeholder directly beneath the button
+placeholder = st.empty()
+
+def calculateprobability():
+    my_array = [text_microplastic_index, text_pm25, text_inflammation_index, text_exposure_years]
     result = CheckCancerProbability(my_array)
-    st.write(result)
+    # store result so it persists across reruns
+    st.session_state['cancer_result'] = result
 
-st.write("Hello world")
+st.button("Calculate Cancer Probability", on_click=calculateprobability)
+
+# show the result directly beneath the button
+if 'cancer_result' in st.session_state:
+    placeholder.write(st.session_state['cancer_result'])
+
+
+
