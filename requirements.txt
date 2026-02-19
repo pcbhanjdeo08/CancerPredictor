@@ -1,5 +1,5 @@
-numpy==1.26.4
-pandas==2.2.0
-scikit-learn==1.4.1
+numpy>=2.0.0
+pandas>=2.2.0
+scikit-learn>=1.5.0
 # Streamlit required for the web app
 streamlit==1.33.0
