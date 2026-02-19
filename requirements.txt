@@ -1,4 +1,6 @@
 streamlit==1.33.0
-numpy>=2.0.0
+# numpy 2.0+ conflicts with streamlit 1.33.0 which requires numpy<2
+# Use a numpy range compatible with streamlit
+numpy>=1.19.3,<2.0.0
 pandas>=2.1.0
 scikit-learn>=1.4.0
