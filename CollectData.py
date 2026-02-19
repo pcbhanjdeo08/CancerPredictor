@@ -10,10 +10,10 @@ from CheckCancerProbability import CheckCancerProbability
 st.title("Corelation of cancer with microplastic")
 st.write("This is an interactive webpage built with Python to show correlation between cancer and microplastic.")
 
-text_microplastic_index = st.number_input("Enter microplastic_index")
-text_pm25 = st.number_input("Enter pm25")
-text_inflammation_index = st.number_input("Enter minflammation_index")
-text_exposure_years = st.number_input("Enter exposure_years")
+text_microplastic_index = st.number_input("Enter microplastic_index - Range (0-100)")
+text_pm25 = st.number_input("Enter pm25 - Range (0-150)")
+text_inflammation_index = st.number_input("Enter minflammation_index - Range (0-100)")
+text_exposure_years = st.number_input("Enter exposure_years - Range (0-40)")
 
 # create a placeholder directly beneath the button
 placeholder = st.empty()

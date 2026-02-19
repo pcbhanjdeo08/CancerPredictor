@@ -23,12 +23,16 @@ pm25 = np.random.uniform(0, 150, n_samples)
 inflammation = np.random.uniform(0, 100, n_samples)
 years = np.random.uniform(0, 40, n_samples)
 
+noise = np.random.normal(0, 5, n_samples)
+
 risk_score = (
     0.04 * microplastic +
     0.03 * pm25 +
     0.05 * inflammation +
-    0.02 * years
+    0.02 * years +
+    noise
 )
+
 
 probability = 1 / (1 + np.exp(-risk_score + 5))
 labels = (probability > 0.5).astype(int)
@@ -73,7 +77,7 @@ def CheckCancerProbability(input_array):
                             float(input_array[3])]])
     probability = model.predict_proba(input_data)[0][1]
     return {
-        "simulated_probability": round(float(probability), 4),
+        "simulated_cancer_probability": round(float(probability), 4),
         "model_accuracy": round(float(accuracy), 2),
         "disclaimer": "Model trained on synthetic research data. Not a medical diagnosis."
     }
