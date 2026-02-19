@@ -1,5 +1,5 @@
 numpy==2.4.2
 pandas==3.0.1
 scikit-learn==1.8.0
-# Optional: streamlit (not installed in venv)
-# streamlit==1.33.0
+# Streamlit required for the web app
+streamlit==1.33.0
